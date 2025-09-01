@@ -1,0 +1,15 @@
+#Create Bucket
+resource "aws_s3_bucket" "my-unique-bucket-name-12345-kaveri" {
+  bucket = "devopschallengs3bucket"
+}
+
+
+#Block public access to the S3 bucket created above
+resource "aws_s3_bucket_public_access_block" "my-unique-bucket-name-12345-kaveri" {
+  bucket = aws_s3_bucket.my-unique-bucket-name-12345-kaveri.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
